@@ -1,0 +1,24 @@
+[package]
+name = "fast-tse-parser"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "SIMD / zero-copy CSV parser for Brazilian TSE open electoral data (consulta_cand, votacao_secao, bem_candidato)"
+license = "MIT"
+keywords = ["tse", "csv", "simd", "zero-copy", "elections"]
+categories = ["parsing", "encoding", "no-std::no-alloc"]
+
+[lib]
+name = "fast_tse_parser"
+path = "src/lib.rs"
+
+[dependencies]
+memmap2 = "0.9"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+
+[[example]]
+name = "bench"
